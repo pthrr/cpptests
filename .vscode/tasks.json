@@ -48,6 +48,28 @@
                 "isDefault": false
             },
             "problemMatcher": [],
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "go-task",
+            "args": [
+                "clean",
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "shell": {
+                    "executable": "bash",
+                    "args": [
+                        "-c"
+                    ]
+                },
+            },
+            "group": {
+                "kind": "clean",
+                "isDefault": true
+            },
+            "problemMatcher": [],
         }
     ]
 }
