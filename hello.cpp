@@ -1,5 +1,4 @@
 #include <print>
-#include <concepts>
 
 auto main() -> int
 {

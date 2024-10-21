@@ -2,6 +2,30 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "build",
+            "type": "shell",
+            "command": "go-task",
+            "args": [
+                "build",
+                "--",
+                "${fileBasename}",
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "shell": {
+                    "executable": "bash",
+                    "args": [
+                        "-c"
+                    ]
+                },
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [],
+        },
+        {
             "label": "run",
             "type": "shell",
             "command": "go-task",
@@ -14,7 +38,9 @@
                 "cwd": "${workspaceFolder}",
                 "shell": {
                     "executable": "bash",
-                    "args": ["-c"]
+                    "args": [
+                        "-c"
+                    ]
                 },
             },
             "group": {
