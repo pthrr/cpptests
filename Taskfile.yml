@@ -1,0 +1,31 @@
+# https://taskfile.dev
+
+version: "3"
+
+tasks:
+  build:
+    vars:
+      FILENAME: "{{.CLI_ARGS}}"
+      BASENAME: "{{.FILENAME | trimSuffix `.cpp`}}"
+      OUTPUT: "build/{{.BASENAME}}"
+      FLAGS: "-Wall -Wextra -std=c++23"
+    cmds:
+      - "mkdir -p build"
+      - "bear -- gcc {{.FLAGS}} {{.FILENAME}} -o {{.OUTPUT}} -v"
+    sources:
+      - "{{.FILENAME}}"
+    generates:
+      - "{{.OUTPUT}}"
+
+  run:
+    vars:
+      FILENAME: "{{.CLI_ARGS}}"
+      BASENAME: "{{.FILENAME | trimSuffix `.cpp`}}"
+      OUTPUT: "build/{{.BASENAME}}"
+    cmds:
+      - task: build
+      - ./{{.OUTPUT}}
+
+  clean:
+    cmds:
+      - rm -rf build
