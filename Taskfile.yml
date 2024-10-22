@@ -11,7 +11,7 @@ tasks:
       FLAGS: "-Wall -Wextra -std=c++23"
     cmds:
       - "mkdir -p build"
-      - "gcc {{.FLAGS}} {{.FILENAME}} -o {{.OUTPUT}}"
+      - "g++ {{.FLAGS}} {{.FILENAME}} -o {{.OUTPUT}}"
     sources:
       - "{{.FILENAME}}"
     generates:
