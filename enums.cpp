@@ -63,7 +63,7 @@ constexpr auto fromStr( char const* name ) -> Permission
     throw std::invalid_argument( "Unknown enum value" );
 }
 
-int main()
+auto main() -> int
 {
     constexpr Permission perm = fromStr( "Read" ) | fromStr( "Write" );
     std::printf( "%s\n", toString( perm ).c_str() );

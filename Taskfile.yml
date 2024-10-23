@@ -8,7 +8,7 @@ tasks:
       FILENAME: "{{.CLI_ARGS}}"
       BASENAME: "{{.FILENAME | trimSuffix `.cpp`}}"
       OUTPUT: "build/{{.BASENAME}}"
-      FLAGS: "-Wall -Wextra -std=c++23"
+      FLAGS: "-Wall -Wextra -std=c++23 -fconcepts-diagnostics-depth=2"
     cmds:
       - "mkdir -p build"
       - "g++ {{.FLAGS}} {{.FILENAME}} -o {{.OUTPUT}}"
