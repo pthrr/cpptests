@@ -2,13 +2,13 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "build_debug",
             "type": "shell",
             "command": "go-task",
             "args": [
-                "build",
+                "build_debug",
                 "--",
-                "${fileBasename}",
+                "${fileBasename}"
             ],
             "options": {
                 "cwd": "${workspaceFolder}",
@@ -17,13 +17,37 @@
                     "args": [
                         "-c"
                     ]
-                },
+                }
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "go-task",
+            "args": [
+                "build",
+                "--",
+                "${fileBasename}"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "shell": {
+                    "executable": "bash",
+                    "args": [
+                        "-c"
+                    ]
+                }
             },
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "problemMatcher": [],
+            "problemMatcher": []
         },
         {
             "label": "run",
@@ -32,7 +56,7 @@
             "args": [
                 "run",
                 "--",
-                "${fileBasename}",
+                "${fileBasename}"
             ],
             "options": {
                 "cwd": "${workspaceFolder}",
@@ -41,20 +65,20 @@
                     "args": [
                         "-c"
                     ]
-                },
+                }
             },
             "group": {
                 "kind": "test",
-                "isDefault": false
+                "isDefault": true
             },
-            "problemMatcher": [],
+            "problemMatcher": []
         },
         {
             "label": "clean",
             "type": "shell",
             "command": "go-task",
             "args": [
-                "clean",
+                "clean"
             ],
             "options": {
                 "cwd": "${workspaceFolder}",
@@ -63,13 +87,13 @@
                     "args": [
                         "-c"
                     ]
-                },
+                }
             },
             "group": {
-                "kind": "clean",
-                "isDefault": true
+                "kind": "none",
+                "isDefault": false
             },
-            "problemMatcher": [],
-        }
+            "problemMatcher": []
+        },
     ]
 }

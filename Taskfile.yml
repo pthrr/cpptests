@@ -3,12 +3,26 @@
 version: "3"
 
 tasks:
+  build_debug:
+    vars:
+      FILENAME: "{{.CLI_ARGS}}"
+      BASENAME: "{{.FILENAME | trimSuffix `.cpp`}}"
+      OUTPUT: "build/{{.BASENAME}}_debug"
+      FLAGS: "-Wall -Wextra -std=c++23 -g3 -Og -fdiagnostics-color=always -fconcepts-diagnostics-depth=2"
+    cmds:
+      - "mkdir -p build"
+      - "g++ {{.FLAGS}} {{.FILENAME}} -o {{.OUTPUT}}"
+    sources:
+      - "{{.FILENAME}}"
+    generates:
+      - "{{.OUTPUT}}"
+
   build:
     vars:
       FILENAME: "{{.CLI_ARGS}}"
       BASENAME: "{{.FILENAME | trimSuffix `.cpp`}}"
       OUTPUT: "build/{{.BASENAME}}"
-      FLAGS: "-Wall -Wextra -std=c++23 -fconcepts-diagnostics-depth=2"
+      FLAGS: "-Wall -Wextra -std=c++23 -fdiagnostics-color=always -fconcepts-diagnostics-depth=2"
     cmds:
       - "mkdir -p build"
       - "g++ {{.FLAGS}} {{.FILENAME}} -o {{.OUTPUT}}"

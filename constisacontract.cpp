@@ -2,12 +2,14 @@
 #include <print>
 #include <string>
 
+using namespace std::literals::string_literals;
+
 struct Elem
 {
-    int i;
-    char const c;
+    mutable int i;
+    char c;
 
-    auto getString() const -> std::string
+    auto getString() const -> std::string // `this` gets passed non-const
     {
         return std::string( 1, c );
     }
@@ -19,7 +21,7 @@ concept Elementable = requires( T a ) {
     { a.getString() } -> std::same_as< std::string >;
 };
 
-static_assert( Elementable< Elem > );
+static_assert( Elementable< Elem >, "Elem must fulfill Elementable concept" );
 
 template< Elementable T, std::size_t N >
 auto myFun( std::array< T, N > const& arr ) -> void
@@ -31,7 +33,7 @@ auto myFun( std::array< T, N > const& arr ) -> void
 
 auto main() -> int
 {
-    std::array< Elem, 2 > my_arr = { { { 1, 'a' }, { 2, 'b' } } };
+    constexpr std::array< Elem, 2 > my_arr = { { { 1, 'a' }, { 2, 'b' } } };
     myFun( my_arr );
     my_arr.at( 0 ).i = 4;
     myFun( my_arr );

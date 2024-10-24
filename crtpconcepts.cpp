@@ -4,7 +4,6 @@
 template< typename T >
 concept Interface = requires( T a ) {
     { a.myFun() } -> std::same_as< bool >;
-    { a.myFunImpl() } -> std::same_as< bool >;
 };
 
 template< class Derived >
@@ -24,7 +23,7 @@ struct Derived : Base< Derived >
     }
 };
 
-static_assert( Interface< Derived >, "Derived must satisfy the Interface concept" );
+static_assert( Interface< Derived >, "Derived must satisfy the InterfaceDerived concept" );
 
 auto main() -> int
 {
