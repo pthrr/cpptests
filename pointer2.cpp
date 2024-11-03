@@ -9,9 +9,9 @@ auto main() -> int
     {
         auto ptr = std::shared_ptr< int >( new int( 5 ) );
         std::println( "{}", *ptr );
-        ptr2 = ptr; // copied
+        ptr2 = ptr;
         std::println( "{} {}", *ptr, *ptr2 );
-        wk = ptr2;
+        wk = ptr;
     }
 
     if( std::shared_ptr< int > spt = wk.lock() ) {
