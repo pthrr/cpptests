@@ -1,4 +1,3 @@
-#include <concepts>
 #include <print>
 
 template< typename T >
@@ -28,6 +27,8 @@ struct MyClass : public LoggerMixin
         logAndPrint( "Doing something important" );
     }
 };
+
+static_assert( Loggable< MyClass >, "MyClass must be Loggable!" );
 
 int main()
 {
