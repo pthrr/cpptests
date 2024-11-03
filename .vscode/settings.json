@@ -62,6 +62,7 @@
         "locale": "cpp",
         "queue": "cpp",
         "stack": "cpp",
-        "propagate_const": "cpp"
+        "propagate_const": "cpp",
+        "ostream": "cpp"
     }
 }
