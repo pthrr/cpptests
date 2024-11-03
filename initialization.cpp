@@ -34,9 +34,10 @@ struct Container
 
 auto main() -> int
 {
-    auto i = 0;
-    auto v = std::vector< int >{ 1, 2, 3, 4 };
-    auto c = Container{ .a = 1, .b = "abcde" };
+    int i;
+    std::vector< int > v;
+    Container c;
+    std::tie( i, v, c ) = std::make_tuple( 0, std::vector{ 1, 2, 3, 4 }, Container{ .a = 1, .b = "abcde" } );
 
     auto [name, price, quantity] = std::make_tuple( "abc"s, 3.2f, i );
     auto w1 = Widget( name, price, quantity );
